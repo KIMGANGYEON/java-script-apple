@@ -124,6 +124,10 @@ ul.list::after {
 }
 
 
+.form-hide {
+  display: none;
+}
+
 
 
 @keyframes slide-in-top {
