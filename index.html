@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="alert-box" id="alert">알림창
+        
+    </div>
+    <button id="opens">열기</button>
+    <button id="close">닫기</button>
+   
+
+
+    <script>
+    document.getElementById('close').addEventListener('click', function(){
+        document.getElementById('alert').style.display = 'none';
+    })
+    
+    document.getElementById('opens').addEventListener('click', function(){
+        document.getElementById('alert').style.display = 'block';
+        document.getElementById('alert').innerHTML = '아이디';
+    })
+    
+    
+    // function opening(abc ,abc2){
+    //         document.getElementById('alert').style.display = abc;
+    //         document.getElementById('alert').innerHTML = abc2;
+    //     }
+        // function change(abc){
+
+        // }
+      
+    </script>
+</body>
+</html>
