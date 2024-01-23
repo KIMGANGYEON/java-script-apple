@@ -25,16 +25,76 @@
           </form> 
         </div>
       </div> 
+
+      <script>
+        $('form').on('submit', function(){
+            var idValue = document.getElementById('email').value;
+            var pwValue = document.getElementById('password').value
+             if (idValue == ''){
+                alert('아디입력');  
+            }
+             if (/\S+@\S+\.\S+/.test(idValue) == false) {
+                alert('not email')
+            }
+            if (pwValue == ''){
+              alert('비번입력')
+            };
+            if (/[A-Z]/.test(pwValue) == false) {
+                alert('need upper case')            
+              }
+            // if (document.getElementById('email', 'password').value == ''){
+            //     alert('아디비번내놔')
+            // }
+            // }if (document.getElementById('password').value.length < 6){
+            //     alert('비번입력2')}
+        })
+      </script>
     
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <span class="navbar-brand">Navbar</span>
+          <span class="navbar-brand">GangGang</span>
           <span class="badge bg-dark">Dark 🔄</span>
           <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
       </nav> 
+
+      <script>
+        $(window).on('scroll', function(){
+          if (window.scrollY > 100){
+            $('.navbar-brand').css('font-size', '16px')
+          }else {
+            $('.navbar-brand').css('font-size', '30px')            
+          }
+        })
+      </script>
+
+      <script>
+        var navcount = 0;
+
+          $('.navbar-toggler').on('click', function(){
+              navcount++;
+              if(navcount % 2 == 1) {
+                  $('.list-group').addClass('show');
+              }
+              if(navcount % 2 != 1) {
+                  $('.list-group').removeClass('show'); 
+              }
+           })
+         
+          // $('.navbar-toggler').click(function(){
+          // $('.list-group').removeClass('show');
+          //  })
+          
+          // document.querySelector('.navbar-toggler').addEventListener('click', function(){
+          //     document.querySelectorAll('.list-group')[0].classList.add('show');
+          // });
+          // document.querySelector('.navbar-toggler').addEventListener('click', function(){
+          //     document.querySelectorAll('.list-group')[0].removeList.add('show');
+          // });
+          
+      </script>
 
       <ul class="list-group">
         <li class="list-group-item">An item</li>
@@ -49,16 +109,172 @@
         <button id="login" class="btn btn-danger">로그인</button>
       </div>
 
-      <div class="alert alert-danger">
-        5초 이내 구매시 사은품 증정
+      <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam veritatis
+         ratione hic eos adipisci saepe nesciunt animi, odio molestias, explicabo 
+         quam delectus possimus? Consectetur eos dolore dolores quae, 
+         amet sequi!
       </div>
-     
-      <!-- <p>태조 이성계가 태어난 년도는?</p>
-        <input type="text" id="answer">
-        <button id="send-answer">제출</button> -->
 
       <script>
+        $('.lorem').on('scroll', function(){
+          var scrolls = document.querySelector('.lorem').scrollTop;
+          var scrollss = document.querySelector('.lorem').scrollHeight;
+          var scrollsa = document.querySelector('.lorem').clientHeight;
+          if (scrolls > 150){
+            alert('aaazz');
+              $('.lorem').off('scroll');
+          }
+        });
+
+        document.querySelector('html').scrollHeight;
+        document.querySelector('html').clientHeight;
+        window.scrolly
+      </script>
+
+        <div style="height: 1000px;"></div>
+      <script>
+        $('#login').on('click', function(){
+            // $('.black').addClass('show-modal');
+            document.querySelector('.black-bg').classList.add('show-modal')
+        });
+           
+        $('#close').on('click', function(){
+            $('.black-bg').removeClass('show-modal');
+            // document.querySelector('.black-bg').classList.remove('show-modal')
+        });
+        document.querySelector('.black-bg').addEventListener('click', function(e){
+          if (e.target == document.querySelector('.black-bg')){
+            document.querySelector('.black-bg').classList.remove('show-modal');
+          }
+          
+          
+
+        })
+      </script>
+
+      <div class="alert alert-danger">
+        <span id="num">5</span>초 이내 구매시 사은품 증정
+      </div>
+
+      <script>
+         var Time = 5;
+
+        setInterval(function(){
+          Time -= 1;
+          if (Time >=0) {
+            document.querySelector('#num').innerHTML = Time;
+          }
+          if (Time == 0) {
+            document.querySelector('.alert').style.display = 'none';
+          }
+        }, 1000);
+
+        // setTimeout(function(){
+        //   $('.alert').hide();
+        // }, 1000)
         
+        // setInterval(Timeout, 1000)
+        
+        // function Timeout() {
+        //   console.log('hello')
+        // }
+        
+      </script>
+     
+     
+     <div style="overflow: hidden;">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img src="car1.png">
+        </div>
+        <div class="slide-box">
+          <img src="car2.png">
+        </div>
+        <div class="slide-box">
+          <img src="car3.png">
+        </div>
+      </div>
+    </div>
+    <button class="previous ">o</button>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="next">o</button>
+    
+    <script>
+
+      
+      
+      // $('.previous').on('click', function(){
+        //   if (photos == 1){
+          //     $('.slide-container').css('transform', 'translateX(-100vw)');
+          //     photos ++;
+          //   }
+          //   else if (photos == 2){
+            //     $('.slide-container').css('transform', 'translateX(0vw)');          
+            //     photos ++;
+            //   }
+            // })
+            var photos = 1;
+            var photo = 1;
+            
+            $('.next').on('click' ,function(){
+              $('.slide-container').css('transform', 'translateX(-' + photo + '00vw)');
+              photo++
+              
+            })
+            
+            $('.slide-1').on('click',function(){
+              $('.slide-container').css('transform', 'translateX(0vw)');
+              photo = vat(0)
+              photos = 0
+            })
+            $('.slide-2').on('click',function(){
+              $('.slide-container').css('transform', 'translateX(-100vw)');
+              photo = 2
+              photos = 1
+
+              // document.querySelector('.slide-container').style.transform = 'translateX(-100vw)'
+            })
+            $('.slide-3').on('click',function(){
+              $('.slide-container').css('transform', 'translateX(-200vw)');
+              photo = 3
+              photos = 2
+
+            })
+            
+            
+            $('.previous').on('click' ,function(){
+              photos--
+              $('.slide-container').css('transform', 'translateX(-' + photos + '00vw)');
+              
+            })
+            
+            console.log(vat(0))
+
+           function vat(a){
+            return a + 1
+           }
+
+    
+
+      // $('.next').on('click', function(){
+      //   if (photo == 1){
+      //     $('.slide-container').css('transform', 'translateX(-100vw)');
+      //     photo ++;
+      //   }
+      //   else if (photo == 2){
+      //     $('.slide-container').css('transform', 'translateX(-200vw)');          
+      //     photo ++;
+      //   }
+      // })
+    </script>
+    
+    <script>
+        // <!-- <p>태조 이성계가 태어난 년도는?</p>
+        //   <input type="text" id="answer">
+        //   <button id="send-answer">제출</button> -->
         var ccount = 0;
         $('#send-answer').on('click', function(){
             ccount++;
@@ -111,34 +327,20 @@
             }
         }
         abc (300,300)
-        
 
-        $('form').on('submit', function(e){
-             if (document.getElementById('email').value == ''){
-                alert('아디입력')   
-            }
-            else if (document.getElementById('password').value == ''){
-                alert('비번입력')
-            };
-            // if (document.getElementById('email', 'password').value == ''){
-            //     alert('아디비번내놔')
-            // }
-            // }if (document.getElementById('password').value.length < 6){
-            //     alert('비번입력2')}
-        })
+        function 함수(a, b){
+           var result = (a * 60 + b) * 1000;
+           return result
+        }
 
-        
-        
-        $('#login').on('click', function(){
-            // $('.black').addClass('show-modal');
-            document.querySelector('.black-bg').classList.add('show-modal')
-        });
-        
-        
-        $('#close').on('click', function(){
-            $('.black-bg').removeClass('show-modal');
-            // document.querySelector('.black-bg').classList.remove('show-modal')
-        });
+        function 함수(a, b){
+          var result = a * 0.9;
+          if (b == true) {
+            result = result - 1.5;
+          }
+          return result
+        }
+     
         // document.querySelector('.hello').innerHTML = '바보';        
     
 
@@ -155,28 +357,6 @@
         // });
         
         
-        var navcount = 0;
-
-        $('.navbar-toggler').on('click', function(){
-            navcount++;
-            if(navcount % 2 == 1) {
-                $('.list-group').addClass('show');
-            }
-            if(navcount % 2 != 1) {
-                $('.list-group').removeClass('show'); 
-            }
-         })
-
-        // $('.navbar-toggler').click(function(){
-        // $('.list-group').removeClass('show');
-        //  })
-
-        // document.querySelector('.navbar-toggler').addEventListener('click', function(){
-        //     document.querySelectorAll('.list-group')[0].classList.add('show');
-        // });
-        // document.querySelector('.navbar-toggler').addEventListener('click', function(){
-        //     document.querySelectorAll('.list-group')[0].removeList.add('show');
-        // });
         
 
         $('.hello').css('color', 'red');
