@@ -61,7 +61,6 @@
 
 .slide-container {
   width: 300vw;
-  transition: all 1s;
 
 }
 
@@ -186,3 +185,24 @@ ul.list::after {
     }
 } */
 
+
+
+
+.grey {
+  background: lightgray;
+  height: 2000px;
+  margin-top: 500px;
+}
+
+.image2 {
+  float: right;
+  width: 400px;
+  position: sticky;
+  top: 100px;
+  
+}
+
+.texts {
+  float: left;
+  width: 300px;
+}

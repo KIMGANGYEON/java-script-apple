@@ -61,6 +61,21 @@
       </nav> 
 
       <script>
+
+var count = 0;
+
+        $('.badge').on('click', function(){
+            count++;
+            if(count % 2 == 1) {
+                $('.badge').css('color', 'red')
+            }
+            if(count % 2 != 1) {
+                $('.badge').css('color','black')
+            }
+            
+        });
+
+
         $(window).on('scroll', function(){
           if (window.scrollY > 100){
             $('.navbar-brand').css('font-size', '16px')
@@ -184,7 +199,7 @@
      <div style="overflow: hidden;">
       <div class="slide-container">
         <div class="slide-box">
-          <img src="car1.png">
+          <img src="car1.png" draggable="false">
         </div>
         <div class="slide-box">
           <img src="car2.png">
@@ -202,6 +217,77 @@
     
     <script>
 
+      var start = 0;
+      var click3 = false;
+
+      $('.slide-box').eq(0).on('mousedown', function(e){
+        start =  e.clientX;
+        click3 = true;
+
+      })
+    
+      $('.slide-box').eq(0).on('mousemove', function(e){
+        // e.clientX - start;
+        if (click3 == true){
+
+          $('.slide-container').css('transform', `translateX(${e.clientX - start}px)`)
+        }
+      })
+
+      $('.slide-box').eq(0).on('mouseup', function(e){
+        click3 = false;
+
+        if (e.clientX - start < - 100) {
+          $('.slide-container')
+          .css('transition', 'all 1s')
+          .css('transform', 'translateX(-100vw)')
+        } else {
+          $('.slide-container')
+          .css('transition', 'all 1s')
+          .css('transform', 'translateX(0vw)')
+
+
+        }
+        setTimeout(()=>{
+
+          $('.slide-container').css('transition', 'none')
+        },1100)
+      })
+
+      $('.slide-box').eq(0).on('touchstart', function(e){
+        start =  e.touches[0].clientX;
+        click3 = true;
+
+      })
+    
+      $('.slide-box').eq(0).on('touchmove', function(e){
+        // e.clientX - start;
+        if (click3 == true){
+
+          $('.slide-container').css('transform', `translateX(${e.touches[0].clientX - start}px)`)
+        }
+      })
+
+      $('.slide-box').eq(0).on('touchend', function(e){
+        click3 = false;
+
+        if (e.changedTouches[0].clientX - start < - 100) {
+          $('.slide-container')
+          .css('transition', 'all 1s')
+          .css('transform', 'translateX(-100vw)')
+        } else {
+          $('.slide-container')
+          .css('transition', 'all 1s')
+          .css('transform', 'translateX(0vw)')
+
+
+        }
+        setTimeout(()=>{
+
+          $('.slide-container').css('transition', 'none')
+        },1100)
+      })
+      
       
       
       // $('.previous').on('click', function(){
@@ -271,6 +357,44 @@
         // <!-- <p>태조 이성계가 태어난 년도는?</p>
         //   <input type="text" id="answer">
         //   <button id="send-answer">제출</button> -->
+          
+
+        function 함수2(arr, b){
+            var result = 0;
+            for ( let i = 0; i < arr.length; i++ ) {
+                     result = result + arr[i]
+            }
+               if (result/arr.length < b) {
+                    console.log('올랐네요');
+              } else {
+                    console.log('같거나 떨어졌네요 재수추천')
+              }
+              }
+
+          함수2([2,3,4], 2);  //올랐네요 출력될듯 
+        
+        
+        
+        var abc2 = ['흥민','영희','철수','재석'];
+
+          function abcd(name){
+           for (var i = 0; i < 4; i++) {
+            if (name == abc2[i]) {
+              console.log('good')
+            }
+           }
+
+          }
+          abcd('흥민')
+
+          // function plus(ppp){
+
+          //   for(let i = 1; i < 10; i++) {
+          //     console.log(ppp*i)
+          //             }
+          // }
+          // plus(9);
+
         var ccount = 0;
         $('#send-answer').on('click', function(){
             ccount++;
@@ -284,18 +408,7 @@
         })
 
 
-        var count = 0;
-
-        $('.badge').on('click', function(){
-            count++;
-            if(count % 2 == 1) {
-                $('.badge').css('color', 'red')
-            }
-            if(count % 2 != 1) {
-                $('.badge').css('color','black')
-            }
-            
-        });
+        
 
 
         function 삼육구게임(num){

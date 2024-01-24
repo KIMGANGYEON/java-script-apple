@@ -10,32 +10,26 @@
   </head>
   <body>
 
-    <div class="card-group container">
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-      </div>
+    <div class="row">
+
+      <!-- <div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>Card title</h5>
+        <p>가격 : 70000</p>
+      </div> -->
+
+    </div>
+
+    <div class="container my-3">
+      <button id="price" class="btn btn-danger">가격순 정렬</button>
+    </div>
+    <div class="container my-3">
+      <button id="sort1" class="btn btn-danger">다나가 정렬</button>
+    </div>
+    <div class="container my-3">
+      <button id="filter" class="btn btn-danger">6> 정렬</button>
+    </div>
+
       
       <script>
         var products = [
@@ -44,15 +38,224 @@
           { id : 2, price : 60000, title : 'Black Monastery' }
         ];
 
-        document.querySelectorAll('.card-body h5')[0].innerHTML = 
-        products[0].title;
-        document.querySelectorAll('.card-body p')[0].innerHTML = 
-        '가격 : ' + products[0].price;
+        // $('#filter').click(function(){
+        //   var newProduct = products.filter((a) => a.price <= 60000);
+        // })
 
-        var a = 'hi'
-        console.log(`ab${a}ab`);
+        // $('#filter').click(function(){
+        //   var newProduct = products.filter((a) => {
+        //     return a.price <=60000
+        //   })
+        // })
+        $('#filter').click(function(){
+          var newProduct = products.filter(function(a){
+            return a.price <=60000
+          })
+          $('.row').html('');
+            newProduct.forEach(function(a, i){
+            var shop =
+            
+            `  <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+            </div>`;
+            // a = products arry
+            $('.row').append(shop)
+            })
+
+        })
+
+
+
+        $('#sort1').click(function(){
+          products.sort(function(a, b){
+            if (a.title < b.title) {
+              return 1
+            } else {
+              return -1
+            }
+          });
+          $('.row').html('');
+
+            products.forEach(function(a, i){
+            var shop =
+            `  <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${products[i].price}</p>
+            </div>`;
+            $('.row').append(shop)
+            })
+
+        })
+
+       $('#price').click(function(){
+        products.sort(function(a,b){
+          return a.price - b.price
+        })
+        
+        $('.row').html('');
+
+        products.forEach(function(a, i){
+        var shop =
+        `  <div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>${a.title}</h5>
+        <p>가격 : ${products[i].price}</p>
+        
+        </div>`;
+        $('.row').append(shop)
+        })
+
+       })
+
+
+
+        
+        console.log(products.length)
+                //forEach((a, i)=>{})
+
+        products.forEach(function(a, i){
+
+          var shop =
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${products[i].price}</p>
+            <button class="buy">buy<button/>
+        </div>`;
+          $('.row').append(shop)
+        })
+
+        $('.buy').click(function(e){
+          var title = $(e.target).siblings('h5').text();
+
+          if (localStorage.getItem('cart') != null ) {
+            var outs = JSON.parse(localStorage.cart);
+            outs.push(title);
+            localStorage.setItem('cart', JSON.stringify([outs]))
+            //JSON.stringify = arry,object로 변환해서 냠
+            //JSON.parse = arry,object로 변환해서 퉤
+            console.log(title)
+            console.log(localStorage.getItem('cart'))
+            
+          }
+          
+          else if (title.includes('a')){
+            alert('a')
+          }
+         
+          else {
+
+            localStorage.setItem('cart', JSON.stringify([title]))
+          }
+        })
+
+
+        var arr = [1,2,3,];
+        var newArr = JSON.stringify(arr);
+
+        localStorage.setItem('num', newArr);
+        var zzz = localStorage.getItem('num');
+        console.log(JSON.parse(zzz)[1]);
+        console.log(zzz);
+
+      
+        // for (i = 0; i < products.length; i++){
+        //   document.querySelectorAll('.card-body h5')[i].innerHTML = 
+        //   products[i].title;
+        //   document.querySelectorAll('.card-body p')[i].innerHTML = 
+        //   '가격 : ' + products[i].price;
+        // }
+
+        // var a = 'hi'
+        // console.log(`ab${a}ab`);
         
       </script> 
+
+      
+    <div class="container">
+      <button id="more" class="btn btn-danger">more</button>
+    </div>
+
+    <script>
+
+      var count = 0;
+
+      $('#more').on('click', function(){
+        count++;
+        
+        if(count % 2 == 1){
+        morePage()
+        }
+        else {
+          morePage()
+          document.querySelector('#more').style.display = 'none'
+        }
+      })
+
+
+      function morePage(){
+        $.get(`https://codingapple1.github.io/js/more${count}.json`)
+        .done(function(more){
+          more.forEach(function(a, i){
+          var more2 =
+            `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${a.title}</h5>
+            <p>가격 : ${more[i].price}</p>
+            </div>`;
+          $('.row').append(more2)
+          })
+
+        })
+      }
+
+      // $.get('https://codingapple1.github.io/js/more1.json')
+      // .done((more)=>{
+      //   console.log(more)
+      // })
+
+      // $('#more').click(function(){
+      //   $.get('https://codingapple1.github.io/js/more1.json')
+      //   .done(function(more){
+
+      //     more.forEach(function(a, i){
+      //     var more2 =
+      //       `<div class="col-sm-4">
+      //       <img src="https://via.placeholder.com/600" class="w-100">
+      //       <h5>${a.title}</h5>
+      //       <p>가격 : ${more[i].price}</p>
+      //       </div>`;
+      //     $('.row').append(more2)
+      //     })
+
+      //   })
+
+      // })
+
+
+    </script>
+
+      <script>
+
+        $.get('https://codingapple1.github.io/price.json')
+        .done(function(pri){
+          console.log(pri.price)
+        })
+
+        $.get('https://codingapple1.github.io/hello.txt ')
+        .done(function(data){
+          console.log(data)
+        })
+        .fail(function(){
+          console.log('no')
+        })
+
+
+
+      </script>
 
       
     

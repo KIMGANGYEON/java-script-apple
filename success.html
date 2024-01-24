@@ -1,1 +1,42 @@
-asfasfasdf
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="quiz">
+        <h4>물에 빠지면 누구먼저 구할거?</h4>
+        <button>me</button>
+        <button>you</button>
+        <button>hehe</button>
+    </div>
+
+    <script>
+        document.querySelector('#quiz').addEventListener('click', function(e){
+            switch (e.target.innerHTML){
+                case 'me':
+                    alert('qq');
+                    break
+                case 'you':
+                    alert('zzzz')
+                    break
+            }
+        })
+
+        // let abc = 2 + 2;
+        // switch (abc){
+        //     case 3:
+        //         alert('???')
+        //         break
+        //     case 4:
+        //         alert('????????')
+        //         break
+        //     default:
+        //         alert('nono')
+        // }
+
+    </script>
+</body>
+</html>

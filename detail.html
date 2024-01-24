@@ -61,11 +61,19 @@
             }
             if (value == '셔츠'){
                 $('.form-select').eq(1).removeClass('form-hide')
+                $('.form-select').eq(1).html('');
+                // for (var i = 0; i < pants.length; i++)
+                // forEach = arry개수
+                shirts.forEach(function(a){
+                    $('.form-select').eq(1).append(`<option>${a}</option>`)
+                });
+                    
             }
             else if (value == '바지'){
                 $('.form-select').eq(1).removeClass('form-hide');
                 $('.form-select').eq(1).html('');
                 // for (var i = 0; i < pants.length; i++)
+                // forEach = arry개수
                 pants.forEach(function(a){
                     $('.form-select').eq(1).append(`<option>${a}</option>`)
                 });
@@ -75,7 +83,11 @@
             }
         })
 
-      
+      var obj = {name : 'kim', age : 20}
+
+      for (var key in obj) {
+        console.log(obj[key]);
+      }
 
     </script>
 
